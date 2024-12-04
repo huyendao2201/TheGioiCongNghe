@@ -111,4 +111,9 @@ public class CartServiceImpl implements CartService {
         }
 
     }
+    // Phương thức xóa giỏ hàng của người dùng
+    public Integer clearCart(Integer userId) {
+        cartRepository.deleteByUserId(userId);
+        return userId;
+    }
 }

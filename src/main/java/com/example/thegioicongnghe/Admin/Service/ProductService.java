@@ -1,6 +1,7 @@
 package com.example.thegioicongnghe.Admin.Service;
 
 import com.example.thegioicongnghe.Admin.Model.Product;
+import com.example.thegioicongnghe.Admin.Model.ProductCategory;
 import com.example.thegioicongnghe.Admin.Model.ProductImage;
 import com.example.thegioicongnghe.Admin.Repository.ProductImageRepository;
 import com.example.thegioicongnghe.Admin.Repository.ProductRepository;
@@ -33,7 +34,8 @@ public class ProductService {
         return productSlug;
     }
 
-    public Product addProduct(Product product) {
+    /*
+    * public Product addProduct(Product product) {
 
         // Lưu sản phẩm vào cơ sở dữ liệu
         Product savedProduct = productRepository.save(product);
@@ -48,11 +50,14 @@ public class ProductService {
             }
         }
         return savedProduct;
-    }
-
-
+    }*/
     public List<Product> findAll() {
         return productRepository.findAll();
+    }
+
+    // Tìm kiếm sản phẩm theo tên
+    public List<Product> searchProducts(String keyword) {
+        return productRepository.findByProductNameContainingIgnoreCase(keyword);
     }
 
     // Tìm sản phẩm theo ID
@@ -64,15 +69,26 @@ public class ProductService {
     public Product findProductBySlug(String productSlug) {
         return productRepository.findByproductSlug(productSlug).orElse(null);
     }
+
+    // Lấy danh sách sản phẩm theo Slug danh mục
+    public List<Product> findProductsByCategory(ProductCategory productCategory) {
+        return productRepository.findByCategory(productCategory);
+    }
+
     public Product save(Product product) {
         // Tạo slug duy nhất
         String uniqueSlug = generateUniqueSlug(product.getProductName());
         product.setProductSlug(uniqueSlug);
-        if (product.getImageUrl() == null) {
-            throw new IllegalArgumentException("Image URL cannot be null");
+
+        // Kiểm tra và xử lý giá trị imageUrl
+        if (product.getImageUrl() == null || product.getImageUrl().isEmpty()) {
+            // Gán ảnh mặc định nếu imageUrl null hoặc rỗng
+            product.setImageUrl("default-image.jpg");
         }
+
         return productRepository.save(product);
     }
+
 
     public void deleteById(int id) {
         productRepository.deleteById(id);

@@ -41,7 +41,24 @@ public class SecurityConfig {
 		authenticationProvider.setPasswordEncoder(passwordEncoder());
 		return authenticationProvider;
 	}
+	@Bean
+	public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+		http.csrf(csrf -> csrf.disable())
+				.cors(cors -> cors.disable())
+				.authorizeHttpRequests(req -> req
+						.anyRequest().permitAll() // Cho phép tất cả request không cần kiểm tra
+				)
+				.formLogin(form -> form
+						.loginPage("/signin") // Đường dẫn tới trang đăng nhập (nếu cần)
+						.loginProcessingUrl("/login") // Xử lý logic đăng nhập
+						.failureHandler(authenticationFailureHandler)
+						.successHandler(authenticationSuccessHandler)
+				)
+				.logout(logout -> logout.permitAll()); // Cho phép logout không hạn chế
+		return http.build();
+	}
 
+	/*
 	@Bean
 	public SecurityFilterChain filterChain(HttpSecurity http) throws Exception
 	{
@@ -58,5 +75,6 @@ public class SecurityConfig {
 		
 		return http.build();
 	}
+	 */
 
 }

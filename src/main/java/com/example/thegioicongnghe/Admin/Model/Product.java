@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 
 import java.math.BigDecimal;
 import java.sql.Timestamp;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -18,42 +19,46 @@ public class Product {
     private String productName;
 
     @Column(unique = true, nullable = false, length = 255)
-    private String productSlug;  // URL thân thiện cho SEO
+    private String productSlug; // URL thân thiện cho SEO
 
     @Column(columnDefinition = "TEXT")
     private String description;
 
-    @Column(precision = 10, scale = 2)
+    @Column(precision = 12, scale = 2)
     private BigDecimal price;
 
     private int stockQuantity;
 
-    private String metaTitle;  // Tiêu đề SEO
-    private String metaDescription;  // Mô tả SEO
+    private String metaTitle; // Tiêu đề SEO
+    private String metaDescription; // Mô tả SEO
 
     @ManyToOne
     @JoinColumn(name = "category_id")
-    private ProductCategory category;  // Danh mục của sản phẩm
+    private ProductCategory category; // Danh mục của sản phẩm
 
-    @OneToMany(mappedBy = "product", cascade = CascadeType.PERSIST, orphanRemoval = true)
-    private Set<ProductImage> images;  // Hình ảnh của sản phẩm
+    @OneToMany(mappedBy = "product", cascade = CascadeType.ALL, orphanRemoval = true)
+    private Set<ProductImage> images = new HashSet<>(); // Hình ảnh của sản phẩm
 
-    @OneToMany(mappedBy = "product")
-    private Set<ProductReview> reviews;  // Đánh giá của sản phẩm
+    @OneToMany(mappedBy = "product", cascade = CascadeType.ALL, orphanRemoval = true)
+    private Set<ProductReview> reviews = new HashSet<>(); // Đánh giá của sản phẩm
 
-    @OneToMany(mappedBy = "product")
-    private Set<OrderItem> orderItems;  // Mục đơn hàng
+    @OneToMany(mappedBy = "product", cascade = CascadeType.ALL, orphanRemoval = true)
+    private Set<OrderItem> orderItems = new HashSet<>(); // Mục đơn hàng
 
     @Column(nullable = false)
-    private String imageUrl;  // URL hình ảnh chính của sản phẩm
+    private String imageUrl; // URL hình ảnh chính của sản phẩm
 
     @Column(nullable = false, updatable = false)
-    private Timestamp createdAt;  // Thời gian tạo
+    private Timestamp createdAt; // Thời gian tạo
+
+    @Transient
+    private List<String> imageUrls; // Danh sách URL hình ảnh tạm thời
 
     // Constructor
     public Product() {
         this.createdAt = new Timestamp(System.currentTimeMillis()); // Đặt thời gian tạo mặc định
     }
+
     // Getters và Setters
     public int getProductId() {
         return productId;
@@ -158,8 +163,6 @@ public class Product {
     public void setImageUrl(String imageUrl) {
         this.imageUrl = imageUrl;
     }
-    @Transient
-    private List<String> imageUrls; // Danh sách URL hình ảnh tạm thời
 
     public List<String> getImageUrls() {
         return imageUrls;
@@ -168,11 +171,28 @@ public class Product {
     public void setImageUrls(List<String> imageUrls) {
         this.imageUrls = imageUrls;
     }
+
     public Timestamp getCreatedAt() {
         return createdAt;
     }
 
     public void setCreatedAt(Timestamp createdAt) {
         this.createdAt = createdAt;
+    }
+
+    // Thêm phương thức trợ giúp cho tập hợp images
+    public void addImage(ProductImage image) {
+        if (images == null) {
+            images = new HashSet<>();
+        }
+        images.add(image);
+        image.setProduct(this); // Liên kết hai chiều
+    }
+
+    public void removeImage(ProductImage image) {
+        if (images != null) {
+            images.remove(image);
+            image.setProduct(null); // Ngắt liên kết hai chiều
+        }
     }
 }

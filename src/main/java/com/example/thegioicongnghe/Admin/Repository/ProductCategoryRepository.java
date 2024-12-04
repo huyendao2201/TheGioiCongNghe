@@ -8,4 +8,6 @@ import org.springframework.stereotype.Repository;
 public interface ProductCategoryRepository extends JpaRepository<ProductCategory, Integer> {
     // Thay đổi slug thành categorySlug
     boolean existsByCategorySlug(String categorySlug);
+
+    ProductCategory findByCategorySlug(String slug);
 }

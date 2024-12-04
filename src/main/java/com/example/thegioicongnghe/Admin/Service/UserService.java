@@ -4,10 +4,12 @@ import com.example.thegioicongnghe.Admin.Model.UserDtls;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface UserService {
 
     public UserDtls saveUser(UserDtls user);
+    public UserDtls update(UserDtls user);
 
     public UserDtls getUserByEmail(String email);
 
@@ -35,4 +37,9 @@ public interface UserService {
 
     public Boolean existsEmail(String email);
 
+    List<UserDtls> findAll();
+
+    Optional<UserDtls> findUserById(int id);
+
+    public void deleteById(int id);
 }

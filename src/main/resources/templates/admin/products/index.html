@@ -38,18 +38,16 @@
                 <div class="card-header">
                     <div class="d-flex align-items-center">
                         <h4 class="card-title">Danh sách sản phẩm</h4>
-                        <button
+                        <a
+                                th:href="@{/admin/product/add}"
                                 class="btn btn-primary btn-round ms-auto"
-                                data-bs-toggle="modal"
-                                data-bs-target="#addRowModal"
                         >
                             <i class="fa fa-plus"></i>
                             Thêm sản phẩm
-                        </button>
+                        </a>
                     </div>
                 </div>
                 <div class="card-body">
-                    <!-- Modal -->
                     <div class="table-responsive">
                         <table
                                 id="add-row"
@@ -81,6 +79,15 @@
                                 <td><img th:src="@{'/product_images/main/' +${product.imageUrl}}" width="50px" height="50px" alt="Icon"> </td>
                                 <td>
                                     <div class="form-button-action">
+                                        <a      th:href="@{/admin/products/detail/{id}(id=${product.productId})}"
+                                                type="button"
+                                                data-bs-toggle="tooltip"
+                                                title=""
+                                                class="btn btn-link btn-primary btn-lg"
+                                                data-original-title="Edit Task"
+                                        >
+                                            <i class="icon-eye"></i>
+                                        </a>
                                         <a      th:href="@{/admin/products/edit/{id}(id=${product.productId})}"
                                                 type="button"
                                                 data-bs-toggle="tooltip"

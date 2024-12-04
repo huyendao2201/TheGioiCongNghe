@@ -9,7 +9,7 @@
         <div class="categrie-product-activation slick-layout-wrapper--15 axil-slick-arrow  arrow-top-slide">
             <div class="slick-single-layout" th:each="category : ${categories}">
                 <div class="categrie-product" data-sal="zoom-out" data-sal-delay="200" data-sal-duration="500">
-                    <a href="#">
+                    <a th:href="@{'/categories/' + ${category.categorySlug}}">
                         <img class="img-fluid" th:src="@{'/category_img/' +${category.icon}}" alt="product categorie">
                         <h6 class="cat-title" th:text="${category.categoryName}"></h6>
                     </a>
@@ -17,117 +17,6 @@
                 <!-- End .categrie-product -->
             </div>
             <!-- End .slick-single-layout -->
-
-            <div class="slick-single-layout">
-                <div class="categrie-product" data-sal="zoom-out" data-sal-delay="300" data-sal-duration="500">
-                    <a href="#">
-                        <img class="img-fluid" src="/user/images/product/categories/elec-5.png" alt="product categorie">
-                        <h6 class="cat-title">Máy tính</h6>
-                    </a>
-                </div>
-                <!-- End .categrie-product -->
-            </div>
-            <!-- End .slick-single-layout -->
-            <div class="slick-single-layout">
-                <div class="categrie-product" data-sal="zoom-out" data-sal-delay="400" data-sal-duration="500">
-                    <a href="#">
-                        <img class="img-fluid" src="/user/images/product/categories/elec-11.png" alt="product categorie">
-                        <h6 class="cat-title">Phụ kiện</h6>
-                    </a>
-                </div>
-                <!-- End .categrie-product -->
-            </div>
-            <!-- End .slick-single-layout -->
-            <div class="slick-single-layout">
-                <div class="categrie-product" data-sal="zoom-out" data-sal-delay="500" data-sal-duration="500">
-                    <a href="#">
-                        <img class="img-fluid" src="/user/images/product/categories/elec-6.png" alt="product categorie">
-                        <h6 class="cat-title">Laptops</h6>
-                    </a>
-                </div>
-                <!-- End .categrie-product -->
-            </div>
-            <!-- End .slick-single-layout -->
-            <div class="slick-single-layout">
-                <div class="categrie-product" data-sal="zoom-out" data-sal-delay="600" data-sal-duration="500">
-                    <a href="#">
-                        <img class="img-fluid" src="/user/images/product/categories/elec-2.png" alt="product categorie">
-                        <h6 class="cat-title">Màn hình</h6>
-                    </a>
-                </div>
-                <!-- End .categrie-product -->
-            </div>
-            <!-- End .slick-single-layout -->
-            <div class="slick-single-layout">
-                <div class="categrie-product" data-sal="zoom-out" data-sal-delay="700" data-sal-duration="500">
-                    <a href="#">
-                        <img class="img-fluid" src="/user/images/product/categories/elec-7.png" alt="product categorie">
-                        <h6 class="cat-title">Internet</h6>
-                    </a>
-                </div>
-                <!-- End .categrie-product -->
-            </div>
-            <!-- End .slick-single-layout -->
-            <div class="slick-single-layout">
-                <div class="categrie-product" data-sal="zoom-out" data-sal-delay="800" data-sal-duration="500">
-                    <a href="#">
-                        <img class="img-fluid" src="/user/images/product/categories/elec-8.png" alt="product categorie">
-                        <h6 class="cat-title">PC Gaming</h6>
-                    </a>
-                </div>
-                <!-- End .categrie-product -->
-            </div>
-            <!-- End .slick-single-layout -->
-            <div class="slick-single-layout">
-                <div class="categrie-product">
-                    <a href="#">
-                        <img class="img-fluid" src="/user/images/product/categories/elec-1.png" alt="product categorie">
-                        <h6 class="cat-title">Đồng hồ thông minh</h6>
-                    </a>
-                </div>
-                <!-- End .categrie-product -->
-            </div>
-            <!-- End .slick-single-layout -->
-            <div class="slick-single-layout">
-                <div class="categrie-product">
-                    <a href="#">
-                        <img class="img-fluid" src="/user/images/product/categories/elec-9.png" alt="product categorie">
-                        <h6 class="cat-title">Tai nghe</h6>
-                    </a>
-                </div>
-                <!-- End .categrie-product -->
-            </div>
-            <!-- End .slick-single-layout -->
-            <div class="slick-single-layout">
-                <div class="categrie-product">
-                    <a href="#">
-                        <img class="img-fluid" src="/user/images/product/categories/elec-10.png" alt="product categorie">
-                        <h6 class="cat-title">Camera & Photo</h6>
-                    </a>
-                </div>
-                <!-- End .categrie-product -->
-            </div>
-            <!-- End .slick-single-layout -->
-            <div class="slick-single-layout">
-                <div class="categrie-product">
-                    <a href="#">
-                        <img class="img-fluid" src="/user/images/product/categories/elec-8.png" alt="product categorie">
-                        <h6 class="cat-title">Video Games</h6>
-                    </a>
-                </div>
-                <!-- End .categrie-product -->
-            </div>
-            <!-- End .slick-single-layout -->
-            <div class="slick-single-layout">
-                <div class="categrie-product">
-                    <a href="#">
-                        <img class="img-fluid" src="/user/images/product/categories/elec-1.png" alt="product categorie">
-                        <h6 class="cat-title">Theo dõi tập luyện</h6>
-                    </a>
-                </div>
-                <!-- End .categrie-product -->
-            </div>
-
         </div>
     </div>
 </div>

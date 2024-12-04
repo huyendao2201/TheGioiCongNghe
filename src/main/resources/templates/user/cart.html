@@ -71,7 +71,7 @@
                     <a href="#" class="axil-btn btn-outline">Update Cart</a>
                 </div>
             </div>
-            <div class="row" th:each="cart,c:${carts}">
+            <div class="row">
                 <div class="col-xl-5 col-lg-7 offset-xl-7 offset-lg-5">
                     <div class="axil-order-summery mt--80">
                         <h5 class="title mb--20">Order Summary</h5>
@@ -80,7 +80,7 @@
                                 <tbody>
                                 <tr class="order-subtotal">
                                     <td>Tổng giá</td>
-                                    <td th:text="${cart.getTotalPrice()}">
+                                    <td th:text="${totalOrderPrice}">
                                     </td>
                                 </tr>
                                 <tr class="order-shipping">
@@ -94,12 +94,12 @@
                                 </tr>
                                 <tr class="order-total">
                                     <td>Total</td>
-                                    <td class="order-total-amount" th:text="${cart.getTotalPrice()}"></td>
+                                    <td class="order-total-amount" th:text="${totalOrderPrice}"></td>
                                 </tr>
                                 </tbody>
                             </table>
                         </div>
-                        <a href="#" class="axil-btn btn-bg-primary checkout-btn">Process to Checkout</a>
+                        <a th:href="@{'/checkout'}" class="axil-btn btn-bg-primary checkout-btn">Process to Checkout</a>
                     </div>
                 </div>
             </div>

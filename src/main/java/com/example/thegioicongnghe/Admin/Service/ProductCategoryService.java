@@ -18,6 +18,12 @@ public class ProductCategoryService {
         return categoryRepository.findAll();
     }
 
+
+    //Hiển thị sản phẩm theo danh mục
+    public ProductCategory findCategoryByCategorySlug(String slug) {
+        return categoryRepository.findByCategorySlug(slug);
+    }
+
     public Optional<ProductCategory> findById(int id) {
         return categoryRepository.findById(id);
     }
