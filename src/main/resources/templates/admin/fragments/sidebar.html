@@ -73,14 +73,14 @@
                 </li>
                 <li class="nav-item">
                     <a data-bs-toggle="collapse" href="#products">
-                        <i class="fas fa-layer-group"></i>
+                        <i class="fas fa-shopping-bag"></i>
                         <p>Quản lý  sản phẩm</p>
                         <span class="caret"></span>
                     </a>
                     <div class="collapse" id="products">
                         <ul class="nav nav-collapse">
                             <li>
-                                <a th:href="@{/admin/products/index}">
+                                <a th:href="@{/admin/products/list}">
                                     <span class="sub-item">Sản phẩm</span>
                                 </a>
                             </li>
@@ -89,7 +89,7 @@
                 </li>
                 <li class="nav-item">
                     <a data-bs-toggle="collapse" href="#posts">
-                        <i class="fas fa-layer-group"></i>
+                        <i class="fas fa-table"></i>
                         <p>Quản lý bài viết</p>
                         <span class="caret"></span>
                     </a>
@@ -98,6 +98,38 @@
                             <li>
                                 <a th:href="@{/admin/posts/list}">
                                     <span class="sub-item">Danh sách bài viết</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a data-bs-toggle="collapse" href="#order">
+                        <i class="fas fa-th-list"></i>
+                        <p>Quản lý đơn hàng</p>
+                        <span class="caret"></span>
+                    </a>
+                    <div class="collapse" id="order">
+                        <ul class="nav nav-collapse">
+                            <li>
+                                <a th:href="@{/admin/order/list}">
+                                    <span class="sub-item">Danh sách đơn hàng</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a data-bs-toggle="collapse" href="#user">
+                        <i class="fa fa-user"></i>
+                        <p>Quản lý người dùng</p>
+                        <span class="caret"></span>
+                    </a>
+                    <div class="collapse" id="user">
+                        <ul class="nav nav-collapse">
+                            <li>
+                                <a th:href="@{/admin/user/list}">
+                                    <span class="sub-item">Danh sách người dùng</span>
                                 </a>
                             </li>
                         </ul>

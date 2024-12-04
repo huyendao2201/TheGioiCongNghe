@@ -15,8 +15,20 @@
     <link rel="stylesheet" th:href="@{/user/css/style.min.css}">
 </head>
 <body>
+<!---Header--->
+<div th:replace="/user/fragments/header :: header"></div>
+<!--End Header---->
+
 <!-- Thay thế nội dung với layout chính -->
 <div th:replace="layouts/main_layout :: main(content='content')"></div>
+
+<!--Service-->
+<div th:replace="/user/fragments/services :: services"></div>
+<!---End Service--->
+
+<!---Footer--->
+<div th:replace="/user/fragments/footer :: footer"></div>
+<!---End Footer--->
 
 <!-- Modernizer JS -->
 <script th:src="@{/user/js/vendor/modernizr.min.js}"></script>

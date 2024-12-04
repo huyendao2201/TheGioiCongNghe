@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>TheGioiCongNghe.vn | Laptop, PC, Màn hình, Điện thoại, Linh kiện chính hãng</title>
+    <title th:text="${metaTitle}"></title>
+    <meta name="description" th:content="${metaDescription}">
+    <meta name="title" th:content="${metaTitle}">
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" th:href="@{/user/css/vendor/bootstrap.min.css}">
     <link rel="stylesheet" th:href="@{/user/css/vendor/font-awesome.css}">

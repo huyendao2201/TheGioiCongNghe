@@ -3,14 +3,15 @@
     <button class="card-close sidebar-close"><i class="fas fa-times"></i></button>
     <div class="header-search-wrap">
         <div class="card-header">
-            <form action="#">
+            <form th:action="@{/search}" method="get">
                 <div class="input-group">
-                    <input type="search" class="form-control" name="prod-search" id="prod-search" placeholder="Write Something....">
+                    <input type="text" class="form-control" name="keyword" id="prod-search" placeholder="Nhập tên sản phẩm để tìm kiếm">
                     <button type="submit" class="axil-btn btn-bg-primary"><i class="far fa-search"></i></button>
                 </div>
             </form>
         </div>
-        <div class="card-body">
+   <!---
+                <div class="card-body">
             <div class="search-result-header">
                 <h6 class="title">24 Result Found</h6>
                 <a href="shop.html" class="view-all">View All</a>
@@ -74,6 +75,7 @@
                 </div>
             </div>
         </div>
+-->
     </div>
 </div>
 <!-- Header Search Modal End -->

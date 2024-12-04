@@ -29,6 +29,15 @@ public class UserServiceImpl implements UserService {
     @Autowired
     private PasswordEncoder passwordEncoder;
 
+    public List<UserDtls> findAll() {
+        return userRepository.findAll();
+    }
+    public Optional<UserDtls> findUserById(int id) {
+        return userRepository.findById(id);
+    }
+    public void deleteById(int id) {
+        userRepository.deleteById(id);
+    }
     @Override
     public UserDtls saveUser(UserDtls user) {
         user.setRole("ROLE_USER");
@@ -38,6 +47,15 @@ public class UserServiceImpl implements UserService {
 
         String encodePassword = passwordEncoder.encode(user.getPassword());
         user.setPassword(encodePassword);
+        UserDtls saveUser = userRepository.save(user);
+        return saveUser;
+    }
+    @Override
+    public UserDtls update(UserDtls user) {
+        user.setRole(user.getRole());
+        user.setIsEnable(true);
+        user.setAccountNonLocked(true);
+        user.setFailedAttempt(0);
         UserDtls saveUser = userRepository.save(user);
         return saveUser;
     }
