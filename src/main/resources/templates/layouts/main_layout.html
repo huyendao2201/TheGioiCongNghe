@@ -1,7 +1,19 @@
-<!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
-    <title th:text="${pageTitle}"></title>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>TheGioiCongNghe.vn | Laptop, PC, Màn hình, Điện thoại, Linh kiện chính hãng</title>
+    <meta name="robots" content="noindex, follow" />
+    <meta name="description" content="TheGioiCongNghe.vn cung cấp laptop, PC, màn hình, điện thoại và linh kiện chính hãng từ các thương hiệu uy tín. Khám phá ngay những sản phẩm công nghệ chất lượng với giá tốt nhất, bảo hành uy tín, dịch vụ hỗ trợ nhanh chóng. Đặt hàng online tiện lợi, giao hàng toàn quốc." />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Favicon -->
+    <link rel="shortcut icon" type="image/x-icon" href="/user/images/favicon.png">
+
+    <!-- CSS
+    ============================================ -->
+
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" th:href="@{/user/css/vendor/bootstrap.min.css}">
     <link rel="stylesheet" th:href="@{/user/css/vendor/font-awesome.css}">
@@ -13,24 +25,100 @@
     <link rel="stylesheet" th:href="@{/user/css/vendor/magnific-popup.css}">
     <link rel="stylesheet" th:href="@{/user/css/vendor/base.css}">
     <link rel="stylesheet" th:href="@{/user/css/style.min.css}">
+
+
 </head>
-<body>
-<!---Header--->
-<div th:replace="/user/fragments/header :: header"></div>
-<!--End Header---->
+
+<script>
+    window.onload = function () {
+        const message = /*[[${session.welcomeMessage}]]*/ '';
+        if (message) {
+            alert(message); // Hiển thị thông báo dạng alert
+        }
+    };
+</script>
+
+<body class="sticky-header newsletter-popup-modal" th:fragment="main(content)">
+<header th:replace="/user/fragments/header :: header"></header>
+<!-- Thông báo chào mừng nếu không dùng alert -->
+<div th:if="${session.welcomeMessage}" class="alert alert-success">
+    <span th:text="${session.welcomeMessage}"></span>
+</div>
+
+<form th:action="@{/logout}" method="post" style="display:inline;">
+    <button type="submit" class="btn btn-danger">Logout</button>
+</form>
+<main class="main-wrapper" >
+    <div class="axil-main-slider-area main-slider-style-1">
+        <div class="container">
+            <div class="row align-items-center">
+                <div th:replace="/user/fragments/slider :: slider"></div>
+            </div>
+        </div>
+        <ul class="shape-group">
+            <li class="shape-1"><img src="/user/images/others/shape-1.png" alt="Shape"></li>
+            <li class="shape-2"><img src="/user/images/others/shape-2.png" alt="Shape"></li>
+        </ul>
+    </div>
+
+    <!-- Start Categorie Area  -->
+    <!-- Gọi fragment categories -->
+    <div th:replace="/user/fragments/categories :: categories"></div>
+
+    <!-- End Categorie Area  -->
+
+    <!-- Poster Countdown Area  -->
+    <div th:replace="/user/fragments/poster_countdown :: poster_countdown"></div>
+    <!-- End Poster Countdown Area  -->
+
+    <!-- Start Expolre Product Area  -->
+    <div th:replace="/user/fragments/explore_product :: explore_product"></div>
+    <!-- End Expolre Product Area  -->
+
+    <!-- Start New Arrivals Product Area  -->
+    <div th:replace="/user/fragments/new_arrivals_product :: new_arrivals_product"></div>
+    <!-- End New Arrivals Product Area  -->
+
+    <!-- Start Most Sold Product Area  -->
+    <div th:replace="/user/fragments/most_sold_product :: most_sold_product"></div>
+    <!-- End Most Sold Product Area  -->
+
+    <!-- Start Why Choose Area  -->
+    <div th:replace="/user/fragments/why_choose :: why_choose"></div>
+    <!-- End Why Choose Area  -->
+
+    <!-- Start Axil Product Poster Area  -->
+    <div th:replace="/user/fragments/product_poster :: product_poster"></div>
+    <!-- End Axil Product Poster Area  -->
+
+    <!-- Start Axil Newsletter Area  -->
+    <div th:replace="/user/fragments/news_letter :: news_letter"></div>
+    <!-- End Axil Newsletter Area  -->
+</main>
+
+<!--Services-->
+<div th:replace="/user/fragments/services :: services"></div>
+
+<!--Footer--->
+<div th:replace="/user/fragments/footer :: footer"></div>
+
+
+<!-- Product Quick View Modal Start -->
+<div th:replace="/user/fragments/product_quick_view :: product_quick_view"></div>
+<!-- Product Quick View Modal End -->
+
+<!-- Header Search Modal End -->
+<div th:replace="/user/fragments/search_modal :: search_modal"></div>
+<!-- Header Search Modal End -->
+
 <!--Cart Drop Down--->
 <div th:replace="/user/fragments/cart_dropdown :: cart_dropdown"></div>
-<!-- Thay thế nội dung với layout chính -->
-<div th:replace="${content}"></div>
 
-<!--Service-->
-<div th:replace="/user/fragments/services :: services"></div>
-<!---End Service--->
-
-<!---Footer--->
-<div th:replace="/user/fragments/footer :: footer"></div>
-<!---End Footer--->
-
+<!-- Offer Modal Start -->
+<div th:replace="/user/fragments/offer_modal_start :: offer_modal_start"></div>
+<!-- Offer Modal End -->
+<!-- JS
+============================================ -->
 <!-- Modernizer JS -->
 <script th:src="@{/user/js/vendor/modernizr.min.js}"></script>
 <!-- jQuery JS -->
